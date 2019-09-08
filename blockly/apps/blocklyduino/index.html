@@ -5,7 +5,7 @@
   <script type="text/javascript" src="../../blockly_compressed.js"></script>
   <script type="text/javascript" src="../../blocks_compressed.js"></script>
   <script type="text/javascript" src="../../arduino_compressed.js"></script>
-  <script type="text/javascript" src="../../msg/js/en.js"></script>
+  <script type="text/javascript" src="../../msg/js/fr.js"></script>
   <script type="text/javascript" src="Blob.js"></script>
   <script type="text/javascript" src="spin.js"></script>
   <script type="text/javascript" src="FileSaver.min.js"></script>
@@ -16,7 +16,7 @@
  * List of tab names.
  * @private
  */
-var TABS_ = ['blocks', 'arduino', 'xml'];
+var TABS_ = ['blocks', 'arduino'/*, 'xml'*/];
 
 var selected = 'blocks';
 
@@ -26,7 +26,7 @@ var selected = 'blocks';
  */
 function tabClick(clickedName) {
   // If the XML tab was open, save and render the content.
-  if (document.getElementById('tab_xml').className == 'tabon') {
+  /*if (document.getElementById('tab_xml').className == 'tabon') {
     var xmlTextarea = document.getElementById('content_xml');
     var xmlText = xmlTextarea.value;
     var xmlDom = null;
@@ -44,7 +44,7 @@ function tabClick(clickedName) {
       Blockly.mainWorkspace.clear();
       Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xmlDom);
     }
-  }
+  }*/
 
   if (document.getElementById('tab_blocks').className == 'tabon') {
     Blockly.mainWorkspace.setVisible(false);
@@ -278,14 +278,15 @@ function init() {
   <table height="100%" width="100%">
     <tr>
       <td>
-        <h1><a href="https://github.com/gasolin/BlocklyDuino/wiki">BlocklyDuino</a> &gt; web-based visual programming editor for arduino</h1>
+        <!--h1><a href="https://github.com/gasolin/BlocklyDuino/wiki">BlocklyDuino</a> &gt; web-based visual programming editor for arduino</h1-->
+        <h1>BlocklyDuino Virus</h1>
       </td>
     </tr>
     <tr>
       <td>
         <table width="100%">
           <tr id="tabRow" height="1em">
-            <td id="tab_blocks" class="tabon" onclick="tabClick('blocks')">Blocks</td>
+            <td id="tab_blocks" class="tabon" onclick="tabClick('blocks')">Blocs</td>
             <td class="tabmin">&nbsp;</td>
             <!--td id="tab_javascript" class="taboff" onclick="tabClick(this.id)">JavaScript</td>
             <td class="tabmin">&nbsp;</td-->
@@ -295,14 +296,14 @@ function init() {
             <td class="tabmin">&nbsp;</td-->
             <td id="tab_arduino" class="taboff" onclick="tabClick('arduino')">Arduino</td>
             <td class="tabmin">&nbsp;</td>
-            <td id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td>
+            <!--td id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td-->
             <td class="tabmax">
-              <button type="button" onclick="uploadClick()">Upload</button>
-              <button type="button" onclick="resetClick()">Reset</button>
-              <button onclick="discard()">Discard</button>
-              <button onclick="saveCode()">Save Arduino Code</button>
-              <button onclick="save()">Save XML</button>
-              <button id="fakeload">Load XML</button>
+              <!--button type="button" onclick="uploadClick()">Upload</button-->
+              <!--button type="button" onclick="resetClick()">Reset</button-->
+              <button onclick="discard()">Nouveau</button>
+              <button onclick="saveCode()">Exporter code Arduino</button>
+              <button onclick="save()">Enregistrer</button>
+              <button id="fakeload">Ouvrir</button>
               <input type="file" id="load" style="display: none;"/>
               <!--button class="launch" onclick="runJS()">Run Program</button-->
             </td>
@@ -319,14 +320,17 @@ function init() {
   <textarea id="content_xml" class="content" wrap="off"></textarea>
 
   <xml id="toolbox" style="display: none">
-    <category name="Logic">
-      <block type="controls_if"></block>
-      <block type="logic_compare"></block>
-      <block type="logic_operation"></block>
-      <block type="logic_negate"></block>
-      <block type="logic_null"></block>
+    <category name="Sorties">
+      <block type="inout_digital_write"></block>
+      <block type="inout_analog_write">
+        <value name="NUM">
+          <block type="math_number">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+      </block>
     </category>
-    <category name="Control">
+    <category name="Temps">
       <block type="base_delay">
         <value name="DELAY_TIME">
           <block type="math_number">
@@ -334,6 +338,8 @@ function init() {
           </block>
         </value>
       </block>
+    </category>
+    <category name="Boucles">
       <block type="controls_for">
         <value name="FROM">
           <block type="math_number">
@@ -346,9 +352,18 @@ function init() {
           </block>
         </value>
       </block>
-      <block type="controls_whileUntil"></block>
+      <!--block type="controls_whileUntil"></block-->
     </category>
-    <category name="Math">
+    <category name="Logique">
+      <block type="controls_if"></block>
+      <block type="logic_compare"></block>
+      <block type="math_number"></block>
+      <block type="inout_highlow"></block>
+      <!--block type="logic_operation"></block>
+      <block type="logic_negate"></block>
+      <block type="logic_null"></block-->
+    </category>    
+    <!--category name="Math">
       <block type="math_number"></block>
       <block type="math_arithmetic"></block>
       <block type="base_map">
@@ -358,33 +373,25 @@ function init() {
           </block>
         </value>
       </block>
-    </category>
-    <category name="Text">
+    </category-->
+    <!--category name="Text">
       <block type="text"></block>
-    </category>
-    <category name="Variables" custom="VARIABLE"></category>
-    <category name="Functions" custom="PROCEDURE"></category>
-    <sep></sep>
-    <category name="Input/Output">
-      <block type="inout_highlow"></block>
-      <block type="inout_digital_write"></block>
-      <block type="inout_digital_read"></block>
-      <block type="inout_analog_write">
-        <value name="NUM">
-          <block type="math_number">
-            <field name="NUM">0</field>
-          </block>
-        </value>
-      </block>
+    </category-->
+    <!--category name="Variables" custom="VARIABLE"></category-->
+    <!--category name="Functions" custom="PROCEDURE"></category-->
+    <!--sep></sep-->
+    <category name="Entrées">
+      <!--block type="inout_highlow"></block-->
+      <block type="inout_digital_read"></block>      
       <block type="inout_analog_read"></block>
-      <block type="serial_print">
+      <!--block type="serial_print">
         <value name="CONTENT">
           <block type="text">
             <field name="TEXT"></field>
           </block>
         </value>
-      </block>
-      <block type="inout_tone">
+      </block-->
+      <!--block type="inout_tone">
         <value name="NUM">
           <block type="math_number">
             <field name="NUM">440</field>
@@ -392,9 +399,9 @@ function init() {
         </value>
       </block>
       <block type="inout_notone"></block>
-      <block type="inout_buildin_led"></block>
-    </category>
-    <category name="Servo">
+      <block type="inout_buildin_led"></block-->
+    </category>    
+    <!--category name="Servo">
       <block type="servo_move">
         <value name="DEGREE">
           <block type="math_number">
@@ -403,25 +410,34 @@ function init() {
         </value>
       </block>
       <block type="servo_read_degrees"></block>
-    </category>
-    <category name="Grove Analog">
+    </category-->
+    <!--category name="Grove Analog">
       <block type="grove_rotary_angle"></block>
       <block type="grove_temporature_sensor"></block>
       <block type="grove_sound_sensor"></block>
       <block type="grove_thumb_joystick"></block>
-    </category>
-    <category name="Grove">
-      <block type="grove_led"></block>
+    </category-->
+    <!--category name="Capteurs"-->
+      <!--block type="grove_led"></block>
       <block type="grove_button"></block>
       <block type="grove_relay"></block>
       <block type="grove_tilt_switch"></block>
       <block type="grove_piezo_buzzer"></block>
       <block type="grove_pir_motion_sensor"></block>
       <block type="grove_line_finder"></block>
-      <block type="grove_rgb_led"></block>
-      <block type="grove_ultrasonic_ranger"></block>
+      <block type="grove_rgb_led"></block-->
+      <!--block type="grove_ultrasonic_ranger"></block>
+    </category-->
+    <category name="Console">
+        <block type="serial_print">
+          <value name="CONTENT">
+            <block type="text">
+              <field name="TEXT"></field>
+            </block>
+          </value>
+        </block>
     </category>
-    <category name="Grove LCD">
+    <!--category name="Grove LCD">
       <block type="grove_serial_lcd_print">
         <value name="TEXT">
           <block type="text">
@@ -444,7 +460,7 @@ function init() {
     </category>
     <category name="Grove Motor">
       <block type="grove_motor_shield"></block>
-    </category>
+    </category-->
   </xml>
 </body>
 </html>

@@ -1096,3 +1096,14 @@ Blockly.Msg.PROCEDURES_CREATE_DO = 'Create "%1"';
 Blockly.Msg.PROCEDURES_IFRETURN_TOOLTIP = 'If a value is true, then return a second value.';
 /// warning - This appears if the user tries to use this block outside of a function definition.
 Blockly.Msg.PROCEDURES_IFRETURN_WARNING = 'Warning: This block may be used only within a function definition.';
+
+Blockly.Msg.DELAY_TITLE = 'Attendre (en ms)';
+Blockly.Msg.DIGITAL_WRITE_TITLE = 'Mettre la PIN';
+Blockly.Msg.DIGITAL_READ_TITLE = 'État sur la PIN';
+Blockly.Msg.ANALOG_WRITE_TITLE = 'Écrire sur la PIN';
+Blockly.Msg.ANALOG_READ_TITLE = 'Valeur analogique sur la PIN';
+Blockly.Msg.HIGH_TITLE = 'HAUT';
+Blockly.Msg.LOW_TITLE = 'BAS';
+Blockly.Msg.PULSE_IN_TITLE = 'pulseIn';
+Blockly.Msg.VALUE_TITLE = 'la valeur';
+Blockly.Msg.SERIAL_PRINT_TITLE = 'Écrire';

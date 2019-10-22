@@ -1,7 +1,7 @@
 <html manifest=node.manifest>
 <head>
   <meta charset="utf-8">
-  <title>BlocklyDuino</title>
+  <title>BlocklyDuino Virus</title>
   <link rel="shortcut icon" type="image/png" href="../../media/icon16.png"/>
   <script type="text/javascript" src="../../blockly_compressed.js"></script>
   <script type="text/javascript" src="../../blocks_compressed.js"></script>
@@ -378,7 +378,6 @@ function init() {
     <!--category name="Text">
       <block type="text"></block>
     </category-->
-    <!--category name="Variables" custom="VARIABLE"></category-->
     <!--category name="Functions" custom="PROCEDURE"></category-->
     <!--sep></sep-->
     <category name="Entrées">
@@ -418,17 +417,25 @@ function init() {
       <block type="grove_sound_sensor"></block>
       <block type="grove_thumb_joystick"></block>
     </category-->
-    <!--category name="Capteurs"-->
-      <!--block type="grove_led"></block>
+    <!--category name="Capteurs">
+      <block type="grove_led"></block>
       <block type="grove_button"></block>
       <block type="grove_relay"></block>
       <block type="grove_tilt_switch"></block>
       <block type="grove_piezo_buzzer"></block>
       <block type="grove_pir_motion_sensor"></block>
       <block type="grove_line_finder"></block>
-      <block type="grove_rgb_led"></block-->
-      <!--block type="grove_ultrasonic_ranger"></block>
+      <block type="grove_rgb_led"></block>
+      <block type="grove_ultrasonic_ranger"></block>
     </category-->
+    <sep></sep>
+    <category name="Capteur distance">
+      <block type="virus_distance_trig"></block>
+      <block type="virus_distance_echo"></block>
+    </category>
+    <sep></sep>
+    <category name="Variables" custom="VARIABLE"></category>
+    <sep></sep>
     <category name="Console">
         <block type="serial_print">
           <value name="CONTENT">

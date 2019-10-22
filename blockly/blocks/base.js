@@ -36,7 +36,7 @@ Blockly.Blocks['base_delay'] = {
   init: function() {
     this.setColour(120);
     this.appendValueInput("DELAY_TIME", 'Number')
-        .appendField("Delay")
+        .appendField(Blockly.Msg.DELAY_TITLE)
         .setCheck('Number');
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
@@ -81,10 +81,10 @@ Blockly.Blocks['inout_digital_write'] = {
   init: function() {
     this.setColour(230);
     this.appendDummyInput()
-	      .appendField("DigitalWrite PIN#")
+	      .appendField(Blockly.Msg.DIGITAL_WRITE_TITLE)
 	      .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN")
-      	.appendField("Stat")
-      	.appendField(new Blockly.FieldDropdown([["HIGH", "HIGH"], ["LOW", "LOW"]]), "STAT");
+      	.appendField("à l'état")
+      	.appendField(new Blockly.FieldDropdown([[Blockly.Msg.HIGH_TITLE, "HIGH"], [Blockly.Msg.LOW_TITLE, "LOW"]]), "STAT");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip('Write digital value to a specific Port');
@@ -96,9 +96,20 @@ Blockly.Blocks['inout_digital_read'] = {
   init: function() {
     this.setColour(230);
     this.appendDummyInput()
-	      .appendField("DigitalRead PIN#")
+	      .appendField(Blockly.Msg.DIGITAL_READ_TITLE)
 	      .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN");
     this.setOutput(true, 'Boolean');
+    this.setTooltip('');
+  }
+};
+
+Blockly.Blocks['inout_pulse_in'] = {
+  init: function() {
+    this.setColour(230);
+    this.appendDummyInput()
+	      .appendField(Blockly.Msg.PULSE_IN_TITLE)
+	      .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN");
+    this.setOutput(true, 'Number');
     this.setTooltip('');
   }
 };
@@ -108,10 +119,10 @@ Blockly.Blocks['inout_analog_write'] = {
   init: function() {
     this.setColour(230);
     this.appendDummyInput()
-        .appendField("AnalogWrite PIN#")
+        .appendField(Blockly.Msg.ANALOG_WRITE_TITLE)
         .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN");
     this.appendValueInput("NUM", 'Number')
-        .appendField("value")
+        .appendField(Blockly.Msg.VALUE_TITLE)
         .setCheck('Number');
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
@@ -125,7 +136,7 @@ Blockly.Blocks['inout_analog_read'] = {
   init: function() {
     this.setColour(230);
     this.appendDummyInput()
-        .appendField("AnalogRead PIN#")
+        .appendField(Blockly.Msg.ANALOG_READ_TITLE)
         .appendField(new Blockly.FieldDropdown(profile.default.analog), "PIN");
     this.setOutput(true, 'Number');
     this.setTooltip('Return value between 0 and 1024');
@@ -168,7 +179,7 @@ Blockly.Blocks['inout_highlow'] = {
   init: function() {
     this.setColour(230);
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["HIGH", "HIGH"], ["LOW", "LOW"]]), 'BOOL')
+        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.HIGH_TITLE, "HIGH"], [Blockly.Msg.LOW_TITLE, "LOW"]]), 'BOOL')
     this.setOutput(true, 'Boolean');
     this.setTooltip('');
   }
@@ -217,7 +228,7 @@ Blockly.Blocks['serial_print'] = {
   init: function() {
     this.setColour(230);
     this.appendValueInput("CONTENT", 'String')
-        .appendField("Serial Print");
+        .appendField(Blockly.Msg.SERIAL_PRINT_TITLE);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip('Prints data to the console/serial port as human-readable ASCII text.');
